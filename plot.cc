@@ -54,7 +54,9 @@ void open_plot() {
     plotter=new PSPlotter(cin,cout,cerr);
     cout << format->ps_beg;
   } else {
-    plotter=new XPlotter(cin,cout,cerr);
+    std::cout << "open plot fail" << std::endl;
+    exit(0);
+    //plotter=new XPlotter(std::cin,std::cout,std::cerr);
   }
   if(!plotter || plotter->openpl()<0) {
     if(plotter) delete plotter;

@@ -1,21 +1,24 @@
-/* A Bison parser, made by GNU Bison 2.5.  */
+/* A Bison parser, made by GNU Bison 2.3.  */
 
-/* Bison interface for Yacc-like parsers in C
-   
-      Copyright (C) 1984, 1989-1990, 2000-2011 Free Software Foundation, Inc.
-   
-   This program is free software: you can redistribute it and/or modify
+/* Skeleton interface for Bison's Yacc-like parsers in C
+
+   Copyright (C) 1984, 1989, 1990, 2000, 2001, 2002, 2003, 2004, 2005, 2006
+   Free Software Foundation, Inc.
+
+   This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation, either version 3 of the License, or
-   (at your option) any later version.
-   
+   the Free Software Foundation; either version 2, or (at your option)
+   any later version.
+
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-   
+
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
+   along with this program; if not, write to the Free Software
+   Foundation, Inc., 51 Franklin Street, Fifth Floor,
+   Boston, MA 02110-1301, USA.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -26,10 +29,9 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-   
+
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
-
 
 /* Tokens.  */
 #ifndef YYTOKENTYPE
@@ -91,16 +93,67 @@
      tokNEG = 915
    };
 #endif
+/* Tokens.  */
+#define tokTYPE 400
+#define tokTENSOR 401
+#define tokID 402
+#define tokCONS 403
+#define tokBASEFUNCT 404
+#define tokLISTFUNCT 405
+#define tokINCLUDE 406
+#define tokSET 407
+#define tokIDCALL 408
+#define tokCONST 500
+#define tokCOND 501
+#define tokEXTERN 502
+#define tokOP 503
+#define tokPROC 504
+#define tokQUFUN 505
+#define tokFOR 506
+#define tokTO 507
+#define tokWHILE 508
+#define tokUNTIL 509
+#define tokBREAK 510
+#define tokRETURN 511
+#define tokIF 512
+#define tokELSE 513
+#define tokRANGE_LENGTH 514
+#define tokRANGE_END 515
+#define tokSTEP 516
+#define tokINPUT 517
+#define tokPRINT 518
+#define tokEXIT 519
+#define tokMEASURE 520
+#define tokRESET 521
+#define tokDUMP 601
+#define tokINSPECT 602
+#define tokLOAD 603
+#define tokSAVE 604
+#define tokPLOT 605
+#define tokSHELL 606
+#define tokEOF 900
+#define tokERROR 901
+#define tokSWAP 903
+#define tokINVTRANS 904
+#define tokTRANS 905
+#define tokXOR 906
+#define tokOR 907
+#define tokAND 908
+#define tokNOT 909
+#define tokNOTEQ 910
+#define tokGREQ 911
+#define tokLEEQ 912
+#define tokEQ 913
+#define tokMOD 914
+#define tokNEG 915
+
 
 
 
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 typedef union YYSTYPE
-{
-
-/* Line 2068 of yacc.c  */
 #line 32 "qcl.y"
-
+{
   objlist* OBJLIST;
   BaseType TYPE;
   int TENSOR;
@@ -115,17 +168,14 @@ typedef union YYSTYPE
   sDef* DEF;
   sDefList* DEFLIST;
   string* STRING;
-
-
-
-/* Line 2068 of yacc.c  */
-#line 123 "yacc.hh"
-} YYSTYPE;
-# define YYSTYPE_IS_TRIVIAL 1
+}
+/* Line 1529 of yacc.c.  */
+#line 174 "yacc.hh"
+	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
+# define YYSTYPE_IS_TRIVIAL 1
 #endif
 
 extern YYSTYPE yylval;
-
 

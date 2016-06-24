@@ -474,10 +474,10 @@ tValue sListFunct::eval(SymTable *loc,SymTable *gl,QuHeap *qh) {
   void *c;
   int i;
   int argc=pexpr->n();
-  tValue v[argc];
+  tValue* v = new tValue[argc + 1];
   tInt n[argc];
   tReal r[argc];
-  tComplex z[argc];
+  tComplex* z = new tComplex[argc + 1];
   tInt rn;
   tReal rr;
   TRACE();

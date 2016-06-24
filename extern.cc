@@ -22,6 +22,16 @@ warranty of merchantability or fitness for any particular purpose.
 #include "quheap.h"
 #include "options.h"
 
+/* OSX MODS */
+#include <vector>
+#include <cmath>
+#include <numeric>
+#include <algorithm>
+#include <functional>
+/* OSX MODS */
+
+
+
 #define ROUTINE(n) int n(const sRoutDef *def,const SymTable *loc,int inv)
 #define EXTERR(s) throw tError(errEXT,s)
 #define GETVAL(s) tValue *value; value=loc->getRef(s); if(!value) EXTERR("parameter "+string(s)+" not found");;
@@ -81,9 +91,10 @@ ROUTINE(ext_matrix) {
   dim=(1 << n);
   if(!loc->getRef(sdec(dim-1,"u%ld")+sdec(dim-1)) || loc->getRef(string("u")+sdec(dim)+sdec(dim)))
     EXTERR("illegal register size for matrix operator");
-  tComplex u[dim][dim];
+  tComplex* u[dim];
   term* t[dim];
   for(i=0;i<dim;i++) for(j=0;j<dim;j++) {
+    u[j] = new tComplex[dim +1];
     v=loc->getVal(sdec(j,"u%ld")+sdec(i));
     if(!v.isComplex()) EXTERR("invalid matrix element");
     if(inv) u[j][i]=conj(v.toComplex()); else u[i][j]=v.toComplex();
@@ -190,7 +201,7 @@ ROUTINE(ext_perm) {
     EXTERR("illegal register size for permutation operator");
   int p[dim];
   int pp[dim];
-  term t[dim];
+  term* t = new term[dim +1];
   for(i=0;i<dim;i++) {
     v=loc->getVal(sdec(i,"p%ld"));
     if(!v.isInt() || v.toInt() < 0 || v.toInt() >= dim) 
@@ -202,7 +213,7 @@ ROUTINE(ext_perm) {
   for(i=0;i<dim;i++) {
     if(pp[i]==-1) EXTERR("no permutation"); 
     if(inv) { 
-      t[i]=term(bitvec(n,pp[i]),1); 
+      t[i]= term(bitvec(n,pp[i]),1); 
     } else {
       t[i]=term(bitvec(n,p[i]),1);
     }
@@ -221,7 +232,7 @@ ROUTINE(ext_genperm) {
   if(dim!=v.dim())
     EXTERR("illegal register size for permutation operator");
   int p[dim];
-  term t[dim];
+  term* t = new term[dim +1];
   for(i=0;i<dim;i++) p[i]=-1;
   for(i=0;i<dim;i++) p[v[i].toInt()]=i;
   for(i=0;i<dim;i++) {

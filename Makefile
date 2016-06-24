@@ -49,7 +49,7 @@ PLLIB = -L/usr/X11/lib -lplotter
 
 RLOPT = -DQCL_USE_READLINE
 #RLLIB = -lreadline
-RLLIB = -lreadline -lncurses
+RLLIB = /usr/local/lib/libreadline.a -lncurses
 
 # Interrupt support
 #
@@ -79,10 +79,11 @@ QCDIR = qc
 QCLIB = $(QCDIR)/libqc.a
 QCLINC = lib
 
+CC = clang ccache
 #CXX = g++
 #CPP = $(CC) -E
 CXXFLAGS = -c $(ARCHOPT) $(DEBUG) $(PLOPT) $(RLOPT) $(IRQOPT) $(ENCOPT) -I$(QCDIR) -DDEF_INCLUDE_PATH="\"$(QCLDIR)\""
-LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -lfl -lqc $(RLLIB) 
+LDFLAGS = $(ARCHOPT) -L$(QCDIR) $(DEBUG) $(PLLIB) -lm -lfl -lqc $(RLLIB) /usr/local/lib/libplotter.dylib 
 
 FILESCC = $(wildcard *.cc)
 FILESH = $(wildcard *.h)
